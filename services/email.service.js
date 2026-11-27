@@ -1,7 +1,7 @@
 const nodemailer=require('nodemailer');
 
 //A medium that helps your Node.js application send emails
-const sendmail=(userId,password)=>{
+const sendmail=(userId,password,mailData)=>{
 const transport = nodemailer.createTransport({
    service:"Gmail",
    auth:{
@@ -11,12 +11,12 @@ const transport = nodemailer.createTransport({
 });
 transport.sendMail(
   {
-    from:'mba@support.com',
-    to:'dharmendreakumar74888121@gmail.com',
-    subject:'Test email for nodemailer',
-    text:'Hey,this is a test email'
+    from:mailData.from,
+    to:mailData.to,
+    subject:mailData.subject,
+    text:mailData.text
   }
-)
+);
 }
 
 module.exports=sendmail;
